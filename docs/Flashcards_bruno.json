@@ -1,0 +1,193 @@
+{
+  "name": "Flashcards",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Get token",
+      "seq": 1,
+      "request": {
+        "url": "http://localhost:8050/api/token",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "folder",
+      "name": "Categories",
+      "items": [
+        {
+          "type": "http",
+          "name": "categories_index",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8050/api/categories",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "categories_store",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8050/api/categories?title=Post 3&_token=k7xmgrQdWyVfdxSgmOqbLx4NTD4NdhNVCSmMrnpW",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "title",
+                "value": "Post 3",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "_token",
+                "value": "k7xmgrQdWyVfdxSgmOqbLx4NTD4NdhNVCSmMrnpW",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "categories_show",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8050/api/categories/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "categories_update",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8050/api/categories/6?title=Renamed&_token=k7xmgrQdWyVfdxSgmOqbLx4NTD4NdhNVCSmMrnpW",
+            "method": "PUT",
+            "headers": [],
+            "params": [
+              {
+                "name": "title",
+                "value": "Renamed",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "_token",
+                "value": "k7xmgrQdWyVfdxSgmOqbLx4NTD4NdhNVCSmMrnpW",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "categories_destroy",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:8050/api/categories/5?_token=k7xmgrQdWyVfdxSgmOqbLx4NTD4NdhNVCSmMrnpW",
+            "method": "DELETE",
+            "headers": [],
+            "params": [
+              {
+                "name": "_token",
+                "value": "k7xmgrQdWyVfdxSgmOqbLx4NTD4NdhNVCSmMrnpW",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Flashcards",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
