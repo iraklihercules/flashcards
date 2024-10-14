@@ -9,6 +9,7 @@ services:
       MYSQL_PASSWORD: pass1
     volumes:
       - ./mysql/live_data:/var/lib/mysql
+      - ./mysql/dump:/dump
     networks:
       - flashcards
     healthcheck:
