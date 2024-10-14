@@ -1,4 +1,18 @@
 services:
+  laravel:
+    build:
+      context: ./laravel
+      dockerfile: Dockerfile
+      args:
+        NON_PRIVILEGED_USER_NAME: developer
+    container_name: flashcards-app
+    volumes:
+      - ./laravel/src:/var/www/html
+    networks:
+      - flashcards
+    depends_on:
+      mysql:
+        condition: service_healthy
   mysql:
     image: mysql:9.0
     container_name: flashcards-mysql
