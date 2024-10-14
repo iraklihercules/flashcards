@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:9.0
+    container_name: flashcards-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin1
+      MYSQL_DATABASE: flashcards_db
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: pass1
+    volumes:
+      - ./mysql/live_data:/var/lib/mysql
+    networks:
+      - flashcards
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-padmin1"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: flashcards-pma
+    ports:
+      - 8051:80
+    environment:
+      PMA_HOST: mysql
+    networks:
+      - flashcards
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+networks:
+  flashcards:
+    name: flashcards
+    driver: bridge
