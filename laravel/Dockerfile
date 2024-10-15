@@ -23,6 +23,7 @@ RUN echo "Creating user ${NON_PRIVILEGED_USER_NAME}"
 RUN groupadd --gid 1000 ${NON_PRIVILEGED_USER_NAME} \
     && useradd ${NON_PRIVILEGED_USER_NAME} --create-home --uid 1000 --gid 1000 --shell /bin/bash \
     && usermod --append --groups www-data ${NON_PRIVILEGED_USER_NAME} \
+    && usermod --append --groups ${NON_PRIVILEGED_USER_NAME} www-data \
     && echo 'alias ll="ls -al"' >> /root/.bashrc \
     && echo 'alias ll="ls -al"' >> /home/${NON_PRIVILEGED_USER_NAME}/.bashrc
 
