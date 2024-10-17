@@ -2,37 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
-class CategoryController extends Controller
+class ThemeController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/categories",
-     *     description="Get Categories",
-     *     tags={"Categories"},
+     *     path="/api/themes",
+     *     description="Get Themes",
+     *     tags={"Themes"},
      *     @OA\Response(response=200, description="Get resources"),
      * )
      */
     public function index(): JsonResponse
     {
-        $categories = Category::all();
-        return response()->json($categories);
+        $themes = Theme::all();
+        return response()->json($themes);
     }
 
     /**
      * @OA\Post(
-     *     path="/api/categories",
-     *     description="Create Category",
-     *     tags={"Categories"},
+     *     path="/api/themes",
+     *     description="Create Theme",
+     *     tags={"Themes"},
      *     @OA\Parameter(
      *         name="title",
-     *         description="Category Title",
-     *         required=true,
+     *         description="Theme Title",
      *         in="query",
+     *         required=true,
      *         @OA\Schema(type="string"),
+     *     ),
+     *     @OA\Parameter(
+     *         name="category_id",
+     *         description="Category ID",
+     *         in="query",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
      *     ),
      *     @OA\Response(response=200, description="Resource created"),
      * )
@@ -41,19 +48,20 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required|max:150',
+            'category_id' => 'required|exists:categories,id',
         ]);
-        $category = Category::create($request->all());
+        $category = Theme::create($request->all());
         return response()->json($category);
     }
 
     /**
      * @OA\Get(
-     *     path="/api/categories/{category}",
-     *     description="Get Category",
-     *     tags={"Categories"},
+     *     path="/api/themes/{theme}",
+     *     description="Get Theme",
+     *     tags={"Themes"},
      *     @OA\Parameter(
-     *         name="category",
-     *         description="Category Id",
+     *         name="theme",
+     *         description="Theme Id",
      *         required=true,
      *         in="path",
      *         @OA\Schema(type="integer"),
@@ -62,51 +70,59 @@ class CategoryController extends Controller
      *     @OA\Response(response=404, description="Resource not found"),
      * )
      */
-    public function show(Category $category): JsonResponse
+    public function show(Theme $theme): JsonResponse
     {
-        return response()->json($category);
+        return response()->json($theme);
     }
 
     /**
      * @OA\Put(
-     *     path="/api/categories/{category}",
-     *     description="Update Category",
-     *     tags={"Categories"},
+     *     path="/api/themes/{theme}",
+     *     description="Update Theme",
+     *     tags={"Themes"},
      *     @OA\Parameter(
-     *         name="category",
-     *         description="Category Id",
+     *         name="theme",
+     *         description="Theme Id",
      *         required=true,
      *         in="path",
      *         @OA\Schema(type="integer"),
      *     ),
      *     @OA\Parameter(
      *         name="title",
-     *         description="Category Title",
+     *         description="Theme Title",
      *         required=true,
      *         in="query",
      *         @OA\Schema(type="string"),
+     *     ),
+     *     @OA\Parameter(
+     *         name="category_id",
+     *         description="Category ID",
+     *         in="query",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
      *     ),
      *     @OA\Response(response=200, description="Resouce updated"),
      *     @OA\Response(response=404, description="Resource not found"),
      * )
      */
-    public function update(Request $request, Category $category): JsonResponse
+    public function update(Request $request, Theme $theme): JsonResponse
     {
         $request->validate([
             'title' => 'required|max:150',
+            'category_id' => 'required|exists:categories,id',
         ]);
-        $category->update($request->all());
-        return response()->json($category);
+        $theme->update($request->all());
+        return response()->json($theme);
     }
 
     /**
      * @OA\Delete(
-     *     path="/api/categories/{category}",
-     *     description="Delete Category",
-     *     tags={"Categories"},
+     *     path="/api/themes/{theme}",
+     *     description="Delete Theme",
+     *     tags={"Themes"},
      *     @OA\Parameter(
-     *         name="category",
-     *         description="Category Id",
+     *         name="theme",
+     *         description="Theme Id",
      *         required=true,
      *         in="path",
      *         @OA\Schema(type="integer"),
@@ -115,9 +131,9 @@ class CategoryController extends Controller
      *     @OA\Response(response=404, description="Resource not found"),
      * ),
      */
-    public function destroy(Category $category): JsonResponse
+    public function destroy(Theme $theme): JsonResponse
     {
-        $category->delete();
-        return response()->json($category);
+        $theme->delete();
+        return response()->json($theme);
     }
 }

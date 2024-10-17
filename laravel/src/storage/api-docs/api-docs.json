@@ -131,6 +131,150 @@
                 }
             }
         },
+        "/api/themes": {
+            "get": {
+                "tags": [
+                    "Themes"
+                ],
+                "description": "Get Themes",
+                "operationId": "3af0ee5eb0876976d8f366507e93e82a",
+                "responses": {
+                    "200": {
+                        "description": "Get resources"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Themes"
+                ],
+                "description": "Create Theme",
+                "operationId": "88a51c58f980c0ba8846ebadd3a9f87a",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Theme Title",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/api/themes/{theme}": {
+            "get": {
+                "tags": [
+                    "Themes"
+                ],
+                "description": "Get Theme",
+                "operationId": "b26fa44f6f494cf0cbcc65d38b232cbe",
+                "parameters": [
+                    {
+                        "name": "theme",
+                        "in": "path",
+                        "description": "Theme Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource returned"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Themes"
+                ],
+                "description": "Update Theme",
+                "operationId": "2279de886d59625c857567cc236b8a50",
+                "parameters": [
+                    {
+                        "name": "theme",
+                        "in": "path",
+                        "description": "Theme Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Theme Title",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resouce updated"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Themes"
+                ],
+                "description": "Delete Theme",
+                "operationId": "0ad1a88ab068d11a34b3572bdbb2cbfa",
+                "parameters": [
+                    {
+                        "name": "theme",
+                        "in": "path",
+                        "description": "Theme Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
         "/api/token": {
             "get": {
                 "tags": [
@@ -150,6 +294,10 @@
         {
             "name": "Categories",
             "description": "Categories"
+        },
+        {
+            "name": "Themes",
+            "description": "Themes"
         },
         {
             "name": "Token",
