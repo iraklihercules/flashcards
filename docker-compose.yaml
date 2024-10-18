@@ -17,7 +17,7 @@ services:
     image: nginx:latest
     container_name: flashcards-nginx
     ports:
-      - 8050:80
+      - 8051:80
     volumes:
       - ./laravel/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./laravel/src:/var/www/html
@@ -25,6 +25,19 @@ services:
       - flashcards
     depends_on:
       - laravel
+  react:
+    build: ./react
+    container_name: flashcards-react
+    volumes:
+      - node_modules:/var/www/html/node_modules
+      - next:/var/www/html/.next
+      - ./react/src:/var/www/html
+    ports:
+      - 8050:8080
+    networks:
+      - flashcards
+    depends_on:
+      - nginx
   mysql:
     image: mysql:9.0
     container_name: flashcards-mysql
@@ -48,7 +61,7 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: flashcards-pma
     ports:
-      - 8051:80
+      - 8052:80
     environment:
       PMA_HOST: mysql
     networks:
@@ -61,3 +74,7 @@ networks:
   flashcards:
     name: flashcards
     driver: bridge
+
+volumes:
+  node_modules:
+  next:

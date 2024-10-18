@@ -20,6 +20,10 @@ shell-root:
 	docker exec -it -u root flashcards-laravel bash
 
 .PHONY:
+react-shell:
+	docker exec -it -u 1000:1000 flashcards-react bash
+
+.PHONY:
 db-dump:
 	docker exec -it flashcards-mysql bash -c '/dump/dump.sh'
 
