@@ -29,7 +29,7 @@ class ThemeController extends Controller
      *     tags={"Themes"},
      *     @OA\Parameter(
      *         name="title",
-     *         description="Theme Title",
+     *         description="Title",
      *         in="query",
      *         required=true,
      *         @OA\Schema(type="string"),
@@ -62,8 +62,8 @@ class ThemeController extends Controller
      *     @OA\Parameter(
      *         name="theme",
      *         description="Theme Id",
-     *         required=true,
      *         in="path",
+     *         required=true,
      *         @OA\Schema(type="integer"),
      *     ),
      *     @OA\Response(response=200, description="Resource returned"),
@@ -83,15 +83,15 @@ class ThemeController extends Controller
      *     @OA\Parameter(
      *         name="theme",
      *         description="Theme Id",
-     *         required=true,
      *         in="path",
+     *         required=true,
      *         @OA\Schema(type="integer"),
      *     ),
      *     @OA\Parameter(
      *         name="title",
-     *         description="Theme Title",
-     *         required=true,
+     *         description="Title",
      *         in="query",
+     *         required=true,
      *         @OA\Schema(type="string"),
      *     ),
      *     @OA\Parameter(
@@ -123,8 +123,8 @@ class ThemeController extends Controller
      *     @OA\Parameter(
      *         name="theme",
      *         description="Theme Id",
-     *         required=true,
      *         in="path",
+     *         required=true,
      *         @OA\Schema(type="integer"),
      *     ),
      *     @OA\Response(response=200, description="Resource deleted"),

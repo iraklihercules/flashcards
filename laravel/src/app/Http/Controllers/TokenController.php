@@ -8,10 +8,10 @@ class TokenController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/token",
+     *     path="/api/csrf_token",
      *     description="Get CSRF token",
-     *     tags={"Token"},
-     *     @OA\Response(response=200, description="Get token"),
+     *     tags={"Tokens"},
+     *     @OA\Response(response=200, description="Resource returned"),
      * )
      */
     public function index(): JsonResponse

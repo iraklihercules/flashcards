@@ -14,7 +14,7 @@
                 "operationId": "3f5817a34833d0a1f4af4548dd3aeaba",
                 "responses": {
                     "200": {
-                        "description": "Get categories"
+                        "description": "Get resources"
                     }
                 }
             },
@@ -28,7 +28,7 @@
                     {
                         "name": "title",
                         "in": "query",
-                        "description": "Category Title",
+                        "description": "Title",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -37,7 +37,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Category created"
+                        "description": "Resource created"
                     }
                 }
             }
@@ -62,7 +62,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get category"
+                        "description": "Resource returned"
                     },
                     "404": {
                         "description": "Resource not found"
@@ -88,7 +88,7 @@
                     {
                         "name": "title",
                         "in": "query",
-                        "description": "Category Title",
+                        "description": "Title",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -131,6 +131,204 @@
                 }
             }
         },
+        "/api/flashcards": {
+            "get": {
+                "tags": [
+                    "Flashcards"
+                ],
+                "description": "Get Flashcards",
+                "operationId": "745e7a92242380cb67d3cd373765f022",
+                "responses": {
+                    "200": {
+                        "description": "Get resources"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Flashcards"
+                ],
+                "description": "Create Flashcard",
+                "operationId": "daad21d01dc5de91b535ea881fb18b52",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Title",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "translation",
+                        "in": "query",
+                        "description": "Translation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Description",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "theme_id",
+                        "in": "query",
+                        "description": "Theme ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/api/flashcards/{flashcard}": {
+            "get": {
+                "tags": [
+                    "Flashcards"
+                ],
+                "description": "Get Flashcard",
+                "operationId": "1c30177165bc2aadc62af11696df906c",
+                "parameters": [
+                    {
+                        "name": "flashcard",
+                        "in": "path",
+                        "description": "Flashcard Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource returned"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Flashcards"
+                ],
+                "description": "Update Flashcard",
+                "operationId": "b2ab96bb6ae33079b914b96750f36403",
+                "parameters": [
+                    {
+                        "name": "flashcard",
+                        "in": "path",
+                        "description": "Flashcard Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Title",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "translation",
+                        "in": "query",
+                        "description": "Translation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Description",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "theme_id",
+                        "in": "query",
+                        "description": "Theme ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resouce updated"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Flashcards"
+                ],
+                "description": "Delete Flashcard",
+                "operationId": "94fe4dfd3153b01a20b068e45cad6f2c",
+                "parameters": [
+                    {
+                        "name": "flashcard",
+                        "in": "path",
+                        "description": "Flashcard Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
         "/api/themes": {
             "get": {
                 "tags": [
@@ -154,7 +352,7 @@
                     {
                         "name": "title",
                         "in": "query",
-                        "description": "Theme Title",
+                        "description": "Title",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -223,7 +421,7 @@
                     {
                         "name": "title",
                         "in": "query",
-                        "description": "Theme Title",
+                        "description": "Title",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -275,16 +473,16 @@
                 }
             }
         },
-        "/api/token": {
+        "/api/csrf_token": {
             "get": {
                 "tags": [
-                    "Token"
+                    "Tokens"
                 ],
                 "description": "Get CSRF token",
-                "operationId": "5ac16309893cb565f49fd1b30848d06a",
+                "operationId": "37881ba21a226ddf8572fb855a46afe1",
                 "responses": {
                     "200": {
-                        "description": "Get token"
+                        "description": "Resource returned"
                     }
                 }
             }
@@ -296,12 +494,16 @@
             "description": "Categories"
         },
         {
+            "name": "Flashcards",
+            "description": "Flashcards"
+        },
+        {
             "name": "Themes",
             "description": "Themes"
         },
         {
-            "name": "Token",
-            "description": "Token"
+            "name": "Tokens",
+            "description": "Tokens"
         }
     ]
 }

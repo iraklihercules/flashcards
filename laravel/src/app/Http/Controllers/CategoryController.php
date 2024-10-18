@@ -29,7 +29,7 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     @OA\Parameter(
      *         name="title",
-     *         description="Category Title",
+     *         description="Title",
      *         required=true,
      *         in="query",
      *         @OA\Schema(type="string"),
@@ -81,7 +81,7 @@ class CategoryController extends Controller
      *     ),
      *     @OA\Parameter(
      *         name="title",
-     *         description="Category Title",
+     *         description="Title",
      *         required=true,
      *         in="query",
      *         @OA\Schema(type="string"),
