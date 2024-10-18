@@ -16,10 +16,31 @@ class CategoryController extends Controller
      *     @OA\Response(response=200, description="Get resources"),
      * )
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $categories = Category::all();
-        return response()->json($categories);
+        $page = (int) $request->query('page');
+        $page = $page > 0 ? $page : 1;
+        $itemsPerPage = 10;
+
+        $query = Category::query();
+
+        // Count
+        $totalItems = $query->count();
+        $totalPages = ceil($totalItems / $itemsPerPage);
+
+        // Items
+        $skip = ($page - 1) * $itemsPerPage;
+        $items = $query
+            ->offset($skip)
+            ->limit($itemsPerPage)
+            ->get();
+
+        return response()->json([
+            'page' => $page,
+            'totalPages' => $totalPages,
+            'totalItems' => $totalItems,
+            'items' => $items,
+        ]);
     }
 
     /**
